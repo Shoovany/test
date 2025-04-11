@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>Good Thymes Virtual Grocery</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" media="all"
+	href="../../css/gtvg.css" th:href="@{/css/gtvg.css}" />
+
+<meta charset="UTF-8">
+<title>Guardar Nombre</title>
+</head>
+
+<body>
+	<h1>Lista de Pacientes Registrados</h1>
+  	<div th:if="${mensaje}">
+  		<p th:text="${mensaje}"> </p> 
+  	</div>
+  
+  
+  <table>
+  <tr>
+    <th>Nombre</th>
+    <th>CURP</th>
+    <th>Edad</th>
+    <th>Area</th>
+  </tr>
+  
+  <tr th:each="paciente: ${pacientes}">
+    <td th:text="${paciente.nombre}"></td>
+    <td th:text="${paciente.curp}"></td>
+    <td th:text="${paciente.edad}"></td>
+    <td th:text="${paciente.area}"></td>
+    <td>
+        <a th:href="@{/editarPaciente(EXME_Paciente_ID=${paciente.EXME_Paciente_ID})}">Editar</a>
+    </td>
+  <td>
+  <form th:action="@{/borrar}" method="post">
+      <input type="hidden" name="EXME_Paciente_ID" th:value="${paciente.EXME_Paciente_ID}" />
+  	<button type="submit">Borrar</button>
+  </form> </td>
+  
+  
+  </tr>
+</table>
+
+  
+  
+</body>
+
+</html> 

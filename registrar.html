@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>Good Thymes Virtual Grocery</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" media="all"
+	href="../../css/gtvg.css" th:href="@{/css/gtvg.css}" />
+
+<meta charset="UTF-8">
+<title>Guardar Nombre</title>
+</head>
+
+<body>
+	<h1>Registro de Paciente</h1>
+  	<div th:if="${mensaje}">
+  		<p th:text="${mensaje}"> </p> 
+  	</div>
+  
+  <form th:action="@{/guardarPac}" th:object="${paciente}" method="post">
+   <input type="hidden" th:field="*{EXME_Paciente_ID}" />
+  <input type="text" th:field="*{nombre}" placeholder="Nombre" required /> 
+    <input type="text" th:field="*{curp}" placeholder="curp" required /> 
+    <input type="text" th:field="*{edad}" placeholder="edad" required /> 
+    <input type="text" th:field="*{area}" placeholder="area" required /> 
+    
+  	<button type="submit" >Registrar Paciente</button>
+  </form>
+  
+</body>
+
+</html> 
